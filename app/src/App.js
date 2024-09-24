@@ -1,30 +1,18 @@
 import './App.css';
+import { Home } from './views/Home/Home.js';
+import { Button } from './components/Button/Button';
 
 function App() {
 
-  const name = "lemon"
 
   return (
-    <div className="App">
-      <div className='yellow-bar-top'> </div>
-      <div className='yellow-bar-bottom'></div>
-
-      <div className="blog-name">
-        <h1 className='title'>Blog</h1> 
-        <p className='slogan'>Blog about anything</p>
-      </div>
-
-      <div className='btns'>
-        <div className='btn'>Log In</div>
-        <div className='btn'>Sign In</div>
-        <div className='btn'>Read</div>
-      </div>
-
-     
-
-     
+    <div className="landing">
+      <Home />
     </div>
+    
   );
 }
 
 export default App;
+
+
