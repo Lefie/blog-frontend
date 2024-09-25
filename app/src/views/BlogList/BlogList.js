@@ -1,7 +1,7 @@
 import React from "react";
 import './BlogList.css';
 import { Blog } from "../../components/Blog/Blog";
-
+import { Link } from 'react-router-dom';
 // input blogs is an array of blog objects
 // [{"title":"article name","author":"name"},{"title":"something","author":""name}]
 
@@ -13,7 +13,7 @@ export const BlogList = ({blogs}) => {
     return (
         <div className="blogpost">
             <div className='yellow-bar-top'> </div>
-            <h1 className="main-page">Blog</h1>
+            <Link to="/"><h1 className="main-page">Blog</h1></Link>
             
 
             <div className="list-container">
