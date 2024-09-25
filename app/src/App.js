@@ -1,18 +1,24 @@
 import './App.css';
 import { Home } from './views/Home/Home.js';
-import { Button } from './components/Button/Button';
+import { BlogList } from './views/BlogList/BlogList.js';
+import { Blog } from './components/Blog/Blog.js';
+import data from './blogs.json'
+
 
 function App() {
-
-
+  
   return (
     <div className="landing">
-      <Home />
+     
     </div>
     
   );
 }
 
 export default App;
+
+/*
+ <BlogList blogs={data}/> 
+*/
 
 

@@ -1,0 +1,12 @@
+
+.blog-list {
+    /* border:1px solid black; */
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    position: relative;
+    margin:auto;
+    width:80%;
+    height: auto;
+    font-family: "Roboto Slab", serif;
+}
