@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element= {<Home />} />
         <Route path='/blogs' element={<BlogList blogs={data}/>} />
+        <Route path='/blogs/:name' element={<Blog />}/>
       </Routes>
      
     </div>

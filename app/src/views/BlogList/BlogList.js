@@ -20,13 +20,16 @@ export const BlogList = ({blogs}) => {
                 <div className="recent"> 
                     <h1>recent</h1> 
                     {blogs && blogs.map((blog)=> (
+
+                        <Link to={`/blogs/${blog.title.replaceAll(" ","-").toLowerCase()}`}>
                         <Blog 
-                        key = {blog.id}
-                        title={blog.title} 
-                        author={blog.author} 
-                        date={blog.date}
-                        content={blog.content} 
-                        isContent={false}/>
+                            key = {blog.id}
+                            title={blog.title} 
+                            author={blog.author} 
+                            date={blog.date}
+                            content={blog.content} 
+                            isContent={false}/>
+                        </Link>
                     ))}
                 </div>
 
@@ -49,8 +52,6 @@ export const BlogList = ({blogs}) => {
 
             <div className='yellow-bar-bottom'></div>
 
-            
-            
         </div>
     )
 }
