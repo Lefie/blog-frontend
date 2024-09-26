@@ -14,6 +14,7 @@ export const BlogList = ({blogs}) => {
         <div className="blogpost">
             <div className='yellow-bar-top'> </div>
             <Link to="/"><h1 className="main-page">Blog</h1></Link>
+            
             <div className="list-container">
                 <div className="recent"> 
                     <h1>recent</h1> 
@@ -24,8 +25,7 @@ export const BlogList = ({blogs}) => {
                             author={blog.author} 
                             date={blog.date}
                             content={blog.content} 
-                            isContent={false}/>
-                       
+                            isContent={false}/>                       
                     ))}
                 </div>
 
@@ -41,7 +41,6 @@ export const BlogList = ({blogs}) => {
                         isContent={false}
                         />
                     ))
-
                     }
                 </div>
             </div>

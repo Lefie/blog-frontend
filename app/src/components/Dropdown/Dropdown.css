@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+.dropdown {
+    position: absolute;
+    margin-right: 10px;
+    margin-top:20px;
+    top:0;
+    right:0;
+    height: auto;
+    width:100px;
+    text-align: center;
+}
+
+.nav {
+    background-color: rgb(244, 157, 7);
+    width:100px;
+    height:80px;
+    font-family: "Roboto Slab", serif;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    
+}

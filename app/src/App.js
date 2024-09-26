@@ -16,7 +16,6 @@ function App() {
         <Route path='/blogs' element={<BlogList blogs={data}/>} />
         <Route path='/blogs/:name' element={<Blog />}/>
       </Routes>
-     
     </div>
     
   );

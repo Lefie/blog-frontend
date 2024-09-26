@@ -1,5 +1,7 @@
 
 p {
+    margin:auto;
     overflow: scroll;
     height: 200px;
+    width:80%;
 }

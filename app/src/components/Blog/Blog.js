@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import data from '../../blogs.json'
 import { Link } from "react-router-dom";
 import { BlogView } from "../../views/BlogView/BlogView";
+import { DropDown } from "../Dropdown/Dropdown";
 
 export const Blog = ({title,author,date,content,isContent}) => {
 
@@ -19,6 +20,7 @@ export const Blog = ({title,author,date,content,isContent}) => {
                 return (
                 <div className="blog-content">
                     <div className='yellow-bar-top'> </div>
+                    <DropDown />
                     <Link to="/"><h1 className="main-page">Blog</h1></Link>
                     <BlogView 
                     title={blog.title}
