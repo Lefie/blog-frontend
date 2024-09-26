@@ -3,6 +3,7 @@ import './Blog.css';
 import { useParams } from "react-router-dom";
 import data from '../../blogs.json'
 import { Link } from "react-router-dom";
+import { BlogView } from "../../views/BlogView/BlogView";
 
 export const Blog = ({title,author,date,content,isContent}) => {
 
@@ -12,13 +13,20 @@ export const Blog = ({title,author,date,content,isContent}) => {
         for(let i = 0; i < data.length; i++){
             const blog_name= data[i].title.toLowerCase()
             const name_modified = name.replaceAll("-"," ")
+            
             if(blog_name === name_modified){
+                const blog = data[i]
                 return (
                 <div className="blog-content">
-                    <h5>{data[i].title}</h5>
-                    <h6>{data[i].author}</h6>
-                    <h6>{data[i].date}</h6>
-                    <p>{data[i].content}</p>
+                    <div className='yellow-bar-top'> </div>
+                    <Link to="/"><h1 className="main-page">Blog</h1></Link>
+                    <BlogView 
+                    title={blog.title}
+                    author={blog.author}
+                    date={blog.date}
+                    content={blog.content}
+                    />
+                    <div className='yellow-bar-bottom'></div>
                 </div>
                 )
             }
