@@ -14,14 +14,10 @@ export const BlogList = ({blogs}) => {
         <div className="blogpost">
             <div className='yellow-bar-top'> </div>
             <Link to="/"><h1 className="main-page">Blog</h1></Link>
-            
-
             <div className="list-container">
                 <div className="recent"> 
                     <h1>recent</h1> 
                     {blogs && blogs.map((blog)=> (
-
-                        <Link to={`/blogs/${blog.title.replaceAll(" ","-").toLowerCase()}`}>
                         <Blog 
                             key = {blog.id}
                             title={blog.title} 
@@ -29,7 +25,7 @@ export const BlogList = ({blogs}) => {
                             date={blog.date}
                             content={blog.content} 
                             isContent={false}/>
-                        </Link>
+                       
                     ))}
                 </div>
 

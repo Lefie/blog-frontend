@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import './Blog.css';
 import { useParams } from "react-router-dom";
 import data from '../../blogs.json'
+import { Link } from "react-router-dom";
 
 export const Blog = ({title,author,date,content,isContent}) => {
-    
 
     const { name } = useParams()
 
@@ -28,7 +28,9 @@ export const Blog = ({title,author,date,content,isContent}) => {
         if(isContent === false) {
             return (
                 <div className="blog-list">
-                    <h5>{title}</h5>
+                    <Link to={`/blogs/${title.replaceAll(" ","-").toLowerCase()}`}>
+                        <h5>{title}</h5>
+                    </Link>
                     <h6>{author}</h6>
                     <h6>{date}</h6>
                 </div>
