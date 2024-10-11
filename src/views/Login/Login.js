@@ -7,7 +7,6 @@ function Login() {
     return (
         <>
         <Navbar1 page="login"/>
-
         <LoginForm />
         </>
     )
