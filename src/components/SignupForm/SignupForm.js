@@ -10,24 +10,41 @@ import {
 import { Card, CardHeader, CardBody,CardFooter, Button, Text,Box, Heading} from '@chakra-ui/react'
 import React,{ useState } from 'react'
 import { userSignup } from '../../utils/signup_api'
+import {
+ useNavigate
+} from "react-router-dom";
 
 export const SignupForm = () => {
 
-    const [name, setName] = useState('')
+    const navigate = useNavigate()
+
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [error, setError] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(name, password, email)
+        console.log(username, password, email)
         try{
-            await userSignup({name,password,email})
+            const data = await userSignup({username,password,email})
+            
+
+            if(data.username && data.password &&data.email){
+
+                navigate("/login");
+            }
 
         }catch(error){
             console.log(error)
+            setError(error.message)
         }
+    }
 
-        
+    function ErrorExist({err}) {
+        if(err){
+            return <Text color='red'>{err}</Text>
+        }
     }
 
     return (
@@ -62,9 +79,9 @@ export const SignupForm = () => {
                     type="text" 
                     name='username' 
                     id='username'
-                    placeholder={name}
-                    value={name}
-                    onChange={(e)=>{setName(e.target.value)}}
+                    placeholder={username}
+                    value={username}
+                    onChange={(e)=>{setUsername(e.target.value)}}
                     />
                     <FormLabel pt='3'>
                         Password
@@ -91,9 +108,8 @@ export const SignupForm = () => {
                     </Button>
                 </CardFooter>
                 </form>
+               <ErrorExist err={error}/>
             </Card>
-
         </Box>
     )
-
 }
