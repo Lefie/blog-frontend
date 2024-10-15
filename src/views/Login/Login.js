@@ -1,5 +1,5 @@
 import "./Login.css"
-import { Navbar1 } from "../../components/Navbar1/Navbar1";
+import { Navbar1 } from "../../components/Navbar/Navbar";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 
 function Login() {

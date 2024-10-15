@@ -21,6 +21,4 @@ export const userSignup = async ({username, password, email}) => {
     const data = await response.json();
     console.log(data)
     return data
-    
-   
 }

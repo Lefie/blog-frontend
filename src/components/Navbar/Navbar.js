@@ -1,4 +1,4 @@
-import './Navbar1.css'
+import './Navbar.css'
 import { Box, Text, Button,Spacer } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import {
@@ -9,9 +9,15 @@ import {
     MenuGroup,
   } from '@chakra-ui/react'
 
+import { useContext } from "react";
+import { AuthContext } from '../../context/AuthContext';
+
+
+
 export const Navbar1 = ( props ) => {
 
     const page = props.page
+    const { user, logout } = useContext(AuthContext)
 
     function Page({page}) {
         if(page === "blogs"){
@@ -23,17 +29,32 @@ export const Navbar1 = ( props ) => {
                 
                     <MenuList>
                         <MenuGroup>
+                        {user? 
+                        <Link to="/mypage">
+                        <MenuItem>Home</MenuItem>
+                        </Link> :
                         <Link to="/">
                         <MenuItem>Home</MenuItem>
-                        </Link>
-
+                        </Link> }
+                        
+                        {user?
+                        <Link to="/blogs">
+                        <MenuItem>Blogs</MenuItem>
+                        </Link>:
                         <Link to="/signup">
                         <MenuItem>Sign up</MenuItem>
                         </Link>
-
+                        }
+                        
+                        {user ? 
+                        <Link to="/" onClick={logout}>
+                        <MenuItem>Logout</MenuItem>
+                        </Link> :
                         <Link to="/login">
                         <MenuItem>Login</MenuItem>
                         </Link>
+                        }
+                        
                         </MenuGroup>
                     </MenuList>
                 </Menu>
@@ -93,7 +114,35 @@ export const Navbar1 = ( props ) => {
             )
         }
 
+        if (page === "loggedin"){
+            return (
+                <Menu>
+                    <MenuButton as={Button} p='2' colorScheme='green'>
+                        Menu
+                    </MenuButton>
+                    
+                        <MenuList>
+                            <MenuGroup>
+                            <Link to="/mypage">
+                            <MenuItem>Home</MenuItem>
+                            </Link>
+                            
+                            <Link to="/blogs">
+                            <MenuItem>Blogs</MenuItem>
+                            </Link>
+
+                            <Link to="/" onClick={logout}>
+                            <MenuItem>Logout</MenuItem>
+                            </Link>
+                        
+                            </MenuGroup>
+                        </MenuList>
+                    </Menu>
+            )
+        }
     }
+
+    
 
     return (
         <>
@@ -105,9 +154,14 @@ export const Navbar1 = ( props ) => {
         display="flex"
         >
             <Text as='b' borderRight='1px' w='5%' fontSize='lg'>
-            <Link to='/'>
+            {user? <Link to='/mypage'>
+                Blog
+            </Link> :
+                <Link to='/'>
                 Blog
             </Link>
+            }
+            
             </Text>
             <Spacer />
            <Page page={page}/>

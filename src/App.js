@@ -3,12 +3,13 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup'
 import Blogs from './views/Blogs/Blogs'
+import MyPage from "./views/MyPage/MyPage";
 import { ChakraProvider } from '@chakra-ui/react'
 import { Route, Routes, Link } from 'react-router-dom';
 
-
 function App() {
 
+  
 
   return (
     <ChakraProvider>
@@ -18,6 +19,7 @@ function App() {
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/mypage' element={<MyPage />} />
       </Routes>      
     </div>
     </ChakraProvider>

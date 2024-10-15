@@ -79,7 +79,6 @@ export const SignupForm = () => {
                     type="text" 
                     name='username' 
                     id='username'
-                    placeholder={username}
                     value={username}
                     onChange={(e)=>{setUsername(e.target.value)}}
                     />
