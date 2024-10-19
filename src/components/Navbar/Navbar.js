@@ -14,7 +14,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 
 
-export const Navbar1 = ( props ) => {
+export const Navbar = ( props ) => {
 
     const page = props.page
     const { user, logout } = useContext(AuthContext)
@@ -44,6 +44,12 @@ export const Navbar1 = ( props ) => {
                         <Link to="/signup">
                         <MenuItem>Sign up</MenuItem>
                         </Link>
+                        }
+
+                        {user?
+                        <Link to="/create_blog">
+                        <MenuItem>Write</MenuItem>
+                        </Link> : <></>
                         }
                         
                         {user ? 
@@ -129,6 +135,10 @@ export const Navbar1 = ( props ) => {
                             
                             <Link to="/blogs">
                             <MenuItem>Blogs</MenuItem>
+                            </Link>
+
+                            <Link to="/create_blog">
+                            <MenuItem>Write</MenuItem>
                             </Link>
 
                             <Link to="/" onClick={logout}>

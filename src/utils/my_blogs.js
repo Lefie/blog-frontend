@@ -1,13 +1,12 @@
 const domain = "http://localhost:5050"
 
-export const userLogin = async({username, password}) => {
-    const route = "/users/login"
+export const myBlogs = async() => {
+    const route = "/blogs/my_blogs"
     const api = domain + route
     
     const response = await fetch(api,{
-        method: 'POST',
+        method: 'GET',
         headers: {'Content-Type': 'application/json'},
-        body:JSON.stringify({username,password}),
         credentials: 'include'
     })
 

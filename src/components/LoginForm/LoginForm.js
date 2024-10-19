@@ -27,14 +27,14 @@ export const LoginForm = () => {
     e.preventDefault()
     try{
       const data = await userLogin({username,password})
+      console.log("from login form",data.isLoggedin)
+      console.log(data.username)
       if(data && data.username && data.isLoggedin){
         const userData = {"username":data.username, "isLoggedin":data.isLoggedin}
         login(userData)
         navigate("/mypage")
       }
-      
-      console.log(data.isLoggedin)
-      console.log(data.username)
+
 
     }catch(error){
       console.log(error)
