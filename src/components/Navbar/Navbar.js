@@ -20,105 +20,6 @@ export const Navbar = ( props ) => {
     const { user, logout } = useContext(AuthContext)
 
     function Page({page}) {
-        if(page === "blogs"){
-            return (
-                <Menu>
-                <MenuButton as={Button} p='2' colorScheme='green'>
-                    Menu
-                </MenuButton>
-                
-                    <MenuList>
-                        <MenuGroup>
-                        {user? 
-                        <Link to="/mypage">
-                        <MenuItem>Home</MenuItem>
-                        </Link> :
-                        <Link to="/">
-                        <MenuItem>Home</MenuItem>
-                        </Link> }
-                        
-                        {user?
-                        <Link to="/blogs">
-                        <MenuItem>Blogs</MenuItem>
-                        </Link>:
-                        <Link to="/signup">
-                        <MenuItem>Sign up</MenuItem>
-                        </Link>
-                        }
-
-                        {user?
-                        <Link to="/create_blog">
-                        <MenuItem>Write</MenuItem>
-                        </Link> : <></>
-                        }
-                        
-                        {user ? 
-                        <Link to="/" onClick={logout}>
-                        <MenuItem>Logout</MenuItem>
-                        </Link> :
-                        <Link to="/login">
-                        <MenuItem>Login</MenuItem>
-                        </Link>
-                        }
-                        
-                        </MenuGroup>
-                    </MenuList>
-                </Menu>
-            )
-        }
-
-        if(page === "login"){
-            return (
-                <Menu>
-                <MenuButton as={Button} p='2' colorScheme='green'>
-                    Menu
-                </MenuButton>
-                
-                    <MenuList>
-                        <MenuGroup>
-                        <Link to="/">
-                        <MenuItem>Home</MenuItem>
-                        </Link>
-
-                        <Link to="/signup">
-                        <MenuItem>Sign up</MenuItem>
-                        </Link>
-
-                         <Link to="/blogs">
-                        <MenuItem>Blogs</MenuItem>
-                        </Link>
-                        </MenuGroup>
-                    </MenuList>
-                </Menu>
-            )
-        }
-
-        if(page === "signup"){
-            return (
-                <Menu>
-                <MenuButton as={Button} p='2' colorScheme='green'>
-                    Menu
-                </MenuButton>
-                
-                    <MenuList>
-                        <MenuGroup>
-                        <Link to="/">
-                        <MenuItem>Home</MenuItem>
-                        </Link>
-                        
-                        <Link to="/login">
-                        <MenuItem>Login</MenuItem>
-                        </Link>
-
-                        <Link to="/blogs">
-                        <MenuItem>Blogs</MenuItem>
-                        </Link>
-                    
-                        </MenuGroup>
-                    </MenuList>
-                </Menu>
-            )
-        }
 
         if (page === "loggedin"){
             return (
@@ -149,6 +50,39 @@ export const Navbar = ( props ) => {
                         </MenuList>
                     </Menu>
             )
+        }
+
+        if (page == 'not_logged_in'){
+            return (
+                <Menu>
+                <MenuButton as={Button} p='2' colorScheme='green'>
+                    Menu
+                </MenuButton>
+                
+                    <MenuList>
+                        <MenuGroup>
+                        <Link to="/">
+                        <MenuItem>Home</MenuItem>
+                        </Link> 
+                        
+                       
+                        <Link to="/signup">
+                        <MenuItem>Sign up</MenuItem>
+                        </Link>
+                        
+                        <Link to="/login">
+                        <MenuItem>Log in</MenuItem>
+                        </Link>
+
+                        <Link to="/blogs">
+                        <MenuItem>Blogs</MenuItem>
+                        </Link>
+
+                        </MenuGroup>
+                    </MenuList>
+                </Menu>
+            )
+
         }
     }
 

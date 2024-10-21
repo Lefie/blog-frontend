@@ -5,7 +5,7 @@ import { SignupForm } from "../../components/SignupForm/SignupForm";
 function Signup() {
     return (
         <>
-        <Navbar page="signup"/>
+        <Navbar page="not_logged_in"/>
         <SignupForm />
         </>
     )

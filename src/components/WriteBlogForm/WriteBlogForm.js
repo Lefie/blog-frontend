@@ -30,15 +30,15 @@ export const WriteBlogForm = () => {
     }
 
     useEffect(() => {
+        async function fetchData(){
+            const data = await uploadimg(image)
+            if(data && data.success === true){
+                console.log(data.img_url)
+                setImageurl(data.img_url)
+            }
+        }
         if(image){
             console.log(image, "from handle image")
-            async function fetchData(){
-                const data = await uploadimg(image)
-                if(data && data.success === true){
-                    console.log(data.img_url)
-                    setImageurl(data.img_url)
-                }
-            }
             fetchData()
         }
     },[image])
@@ -46,9 +46,7 @@ export const WriteBlogForm = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log(title)
-        console.log(content)
-        console.log(imageurl)
+        
         const data = await publish({title,content,imageurl})
         if(data){
             const blog_id = data._id
