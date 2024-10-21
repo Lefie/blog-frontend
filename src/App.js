@@ -7,6 +7,7 @@ import { BlogInfo } from "./components/BlogInfoList/BlogInfo";
 import { DisplayBlog } from "./views/DisplayBlog/DisplayBlog";
 import { CreateBlog } from "./views/CreateBlog/CreateBlog";
 import { AuthorBlog } from "./views/AuthorBlog/AuthorBlog";
+import { Authors } from "./views/Authors/Authors";
 import MyPage from "./views/MyPage/MyPage";
 import { ChakraProvider } from '@chakra-ui/react'
 import { Route, Routes, Link } from 'react-router-dom';
@@ -27,7 +28,7 @@ function App() {
         <Route path='/create_blog' element={<CreateBlog />}/>
         <Route path='/blogs/mypage/:blog_id' element={<DisplayBlog />}/>
         <Route path='/blogs/blog/:blog_id' element={<DisplayBlog />}/>
-        <Route path='/blogs/authors' />
+        <Route path='/blogs/authors' element={<Authors />} />
         <Route path='/blogs/author/:author_name' element={<AuthorBlog />}/>
       </Routes>       
     </div>

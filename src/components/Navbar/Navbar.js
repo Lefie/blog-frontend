@@ -34,17 +34,22 @@ export const Navbar = ( props ) => {
                             <MenuItem>Home</MenuItem>
                             </Link>
                             
+                            <Link to="/create_blog">
+                            <MenuItem>Write</MenuItem>
+                            </Link>
+
                             <Link to="/blogs">
                             <MenuItem>Blogs</MenuItem>
                             </Link>
 
-                            <Link to="/create_blog">
-                            <MenuItem>Write</MenuItem>
+                            <Link to="/blogs/authors">
+                            <MenuItem>Authors</MenuItem>
                             </Link>
 
                             <Link to="/" onClick={logout}>
                             <MenuItem>Logout</MenuItem>
                             </Link>
+
                         
                             </MenuGroup>
                         </MenuList>
