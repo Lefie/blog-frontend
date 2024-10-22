@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { read_blog } from "../../utils/read_blog"
+import { Image, Box, Text } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 export const BlogInfo = () => {
     const {blog_id} = useParams()
@@ -31,8 +33,12 @@ export const BlogInfo = () => {
     },[])
 
     const Img = () =>{
+        const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
+
         if (imgurl){
-            return <img src={imgurl} alt={`${title} photo`}/>
+            return <Image src={imgurl} alt={`${title} photo`}/>
+        }else{
+            return <Image src={default_img} alt={`${title} photo`} />
         }
     }
 
@@ -41,18 +47,29 @@ export const BlogInfo = () => {
     if(blog){
 
         return <>
-        <h1>{title}</h1>
-        <h2>{author}</h2>
-        <h2>{date}</h2>
+        <Box
+        p={12}
+        >
+        <Text fontSize="3xl">{title}</Text>
+        <hr/>
+        <Box display='flex' gap={2}>
+        <Link class='link' to = {`/blogs/author/${author}`}><Text>{author} </Text></Link>
+        <Text>|</Text>
+        <Text>{date}</Text>
+        </Box>
+        <hr/>
         
         <br/>
         <Img />
-        <p>{content}</p>
- 
+            <Text mt={8}>{content}</Text>
+        </Box>
      </>
     }else{
         return<>
-            <p>Nothing to see</p>
+        <Text>
+            nothing to see
+        </Text>
+            
         </>
     }
 
