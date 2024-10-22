@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { AuthContext } from '../../context/AuthContext';
 
 
-export const SingleBlog = ({blog}) => {
+export const SingleBlog = ({blog,page}) => {
 
     const {user} = useContext(AuthContext)
 
@@ -20,9 +20,10 @@ export const SingleBlog = ({blog}) => {
     if(!imgUrl){
         setImgUrl(default_img)
     }
+    console.log("What page am I on", page)
 
     const ButtonList = () => {
-        if(user && user.username === blog.author){
+        if(user && user.username === blog.author && page === "mypage"){
             console.log(user.username , blog.author)
             return <ButtonGroup spacing='5'>
             <Link to={`/blogs/blog/${blog._id}`}>

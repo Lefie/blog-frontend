@@ -47,7 +47,7 @@ function MyPage() {
                    <h3>My Blogs</h3>
                     { blogs && blogs.map(blog => (
                        <>                
-                        <SingleBlog blog={blog} />
+                        <SingleBlog blog={blog} page="mypage" />
                       </>
                     ))
                 }

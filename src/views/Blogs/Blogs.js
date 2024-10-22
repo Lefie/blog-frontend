@@ -45,7 +45,7 @@ function Blogs() {
     >
         {allBlogs && allBlogs.map(
             (blog)=>(
-                <SingleBlog blog={blog}/>
+                <SingleBlog blog={blog} page="all"/>
         )
         )}
     </Box>
