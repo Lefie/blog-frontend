@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { Navbar } from "../../components/Navbar/Navbar"
-import { Text } from "@chakra-ui/react"
+import { Text, Box } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 
@@ -48,9 +48,10 @@ export const Authors = () => {
 
     return <>
         <WhichNavbar />
-        <Text fontSize='3xl'>Authors</Text>
-        <EachAuthor />
-       
+        <Box p={8}>
+            <Text fontSize='3xl'>Authors</Text>
+            <EachAuthor />
+        </Box>
     </>
 
     
