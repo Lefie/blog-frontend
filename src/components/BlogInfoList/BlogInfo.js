@@ -11,9 +11,11 @@ export const BlogInfo = () => {
     const [title,setTitle] = useState('')
     const [author,setAuthor] = useState('')
     const [date, setDate] = useState('')
+    const [updatedDate, setUpdatedDate] = useState('')
     const [imgurl,setImgurl] = useState('')
     const [blogId, setBlogId] = useState('')
     const [content, setContent] = useState('')
+    
 
     useEffect(()=>{
         async function fetchBlog() {
@@ -27,6 +29,7 @@ export const BlogInfo = () => {
                 setDate(data.date)
                 setContent(data.content)
                 setBlogId(data._id)
+                setUpdatedDate(data.updated_date)
             }
         }
         fetchBlog()
@@ -39,6 +42,17 @@ export const BlogInfo = () => {
             return <Image src={imgurl} alt={`${title} photo`}/>
         }else{
             return <Image src={default_img} alt={`${title} photo`} />
+        }
+    }
+
+    const IsUpdated = () => {
+        if(updatedDate){
+            return <>
+            Last Updated : {updatedDate}
+            </>
+        }else{
+            return <>
+            </>
         }
     }
 
@@ -56,6 +70,9 @@ export const BlogInfo = () => {
         <Link class='link' to = {`/blogs/author/${author}`}><Text>{author} </Text></Link>
         <Text>|</Text>
         <Text>{date}</Text>
+        <Text>|</Text>
+        <IsUpdated />
+        
         </Box>
         <hr/>
         
