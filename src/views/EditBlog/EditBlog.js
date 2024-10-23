@@ -27,6 +27,7 @@ export const EditBlog = () => {
     const [image, setImage] = useState()
     const [newImgUrl, setNewImgUrl] = useState('')
     const [blogContent, setBlogContent] = useState('')
+    const [clearImg, setClearImg] = useState(false)
     
 
     useEffect(()=>{
@@ -81,8 +82,29 @@ export const EditBlog = () => {
         if(data){
             naviagte(`/blogs/blog/${blog_id}`)
         }
-        
+    }
 
+    const handleRemoveImage = async(e) => {
+        e.preventDefault()
+        console.log("handle remove image button clicked")
+        const data_obj = {"img_url":""}
+        const data = await update_blog(blog_id, data_obj)
+        if(data){
+            setClearImg(true)
+        }
+    }
+
+    const ClearingImg = () => {
+        if(clearImg === true){
+            return <>
+            <Box bg='green.100'>
+                <Box onClick={()=>{setClearImg(false)}} w={8} h={8}>
+                    X
+                </Box>
+            Image cleared
+            </Box>
+            </>
+        }
     }
 
     return <>
@@ -100,11 +122,18 @@ export const EditBlog = () => {
              />
         </CardHeader>
         <CardBody>
-            {/* fix image */}
+           
         <FormLabel> Image</FormLabel>
           <Input type="file" id='image' name='image'
           onChange={(e)=>{setImage(e.target.files[0])}}
            />
+
+      
+        <Button onClick={handleRemoveImage} m={2}>
+            Remove Imgae
+        </Button>
+        <ClearingImg />
+
 
 
         <FormLabel>Content</FormLabel>

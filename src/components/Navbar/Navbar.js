@@ -102,7 +102,7 @@ export const Navbar = ( props ) => {
         bg="#FAF089"
         display="flex"
         >
-            <Text as='b' borderRight='1px' w='5%' fontSize='lg'>
+            <Text p={1} as='b' borderRight='1px' w='5%' fontSize='lg'>
             {user? <Link to='/mypage'>
                 Blog
             </Link> :
