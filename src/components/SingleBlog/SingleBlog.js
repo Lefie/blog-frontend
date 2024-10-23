@@ -29,7 +29,7 @@ export const SingleBlog = ({blog,page}) => {
             <Link to={`/blogs/blog/${blog._id}`}>
                 <Button colorScheme='green' variant='solid'>Read</Button>
                 </Link>
-                <Link>
+                <Link to={`/blogs/edit/${blog._id}`}>
                 <Button colorScheme='green' variant='ghost'>Edit</Button>
                 </Link>
                 <Link>

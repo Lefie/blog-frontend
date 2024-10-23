@@ -75,7 +75,6 @@ export const WriteBlogForm = () => {
              />
             <FormLabel>Content</FormLabel>
             
-            {/* <Input h='500px'type="text" name="content" id="blog_content" /> */}
             <Textarea
                 size='md'
                 h='300px'

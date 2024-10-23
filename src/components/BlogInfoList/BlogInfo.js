@@ -69,7 +69,6 @@ export const BlogInfo = () => {
         <Text>
             nothing to see
         </Text>
-            
         </>
     }
 

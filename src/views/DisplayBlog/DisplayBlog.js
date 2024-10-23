@@ -19,9 +19,5 @@ export const DisplayBlog = () => {
         <Navbar page="not_logged_in" />
         <BlogInfo />
         </>
-    }
-
-  
-        
-    
+    } 
 }
