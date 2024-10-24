@@ -35,6 +35,9 @@ function Blogs() {
         }
     }
 
+    
+
+
     return <>
     <WhichNavbar />
     <Box
@@ -45,7 +48,7 @@ function Blogs() {
     >
         {allBlogs && allBlogs.map(
             (blog)=>(
-                <SingleBlog blog={blog} page="all"/>
+                <SingleBlog key={blog._id} blog={blog} page="all"/>
         )
         )}
     </Box>

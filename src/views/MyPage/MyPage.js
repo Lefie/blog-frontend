@@ -32,6 +32,11 @@ function MyPage() {
 
     },[user])
 
+    // Function to remove a blog from the list after deletion
+    const handleDeleteBlog = (deletedBlogId) => {
+        setBlogs((prevBlogs) => prevBlogs.filter(blog => blog._id !== deletedBlogId));
+    };
+
     if(user){
         return <>
             <Navbar page='loggedin'/>
@@ -47,7 +52,12 @@ function MyPage() {
                    <h3>My Blogs</h3>
                     { blogs && blogs.map(blog => (
                        <>                
-                        <SingleBlog blog={blog} page="mypage" />
+                        <SingleBlog 
+                        key={blog._id}
+                        blog={blog}
+                        page="mypage"
+                        onDelete={handleDeleteBlog}
+                         />
                       </>
                     ))
                 }

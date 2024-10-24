@@ -3,17 +3,18 @@ import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import { Button, Heading } from "@chakra-ui/react"
 import {Card,CardHeader,CardBody,CardFooter} from '@chakra-ui/react'
-import { Text, ButtonGroup, Divider, Image } from "@chakra-ui/react"
+import { Text, ButtonGroup, Divider, Image, Box } from "@chakra-ui/react"
 import './SingleBlog.css'
 import { img } from "framer-motion/client"
 import { useContext } from "react";
 import { AuthContext } from '../../context/AuthContext';
+import { delete_blog } from "../../utils/delete_blog"
+import { useNavigate } from "react-router-dom"
 
-
-export const SingleBlog = ({blog,page}) => {
+export const SingleBlog = ({blog,page,onDelete}) => {
 
     const {user} = useContext(AuthContext)
-
+    const naviagte = useNavigate()
     const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
     const [imgUrl, setImgUrl] = useState(blog.img_url)
     console.log(blog.img_url)
@@ -21,8 +22,53 @@ export const SingleBlog = ({blog,page}) => {
         setImgUrl(default_img)
     }
     console.log("What page am I on", page)
+    const [showPopup, setShowPopup] = useState(false)
+
+    const handleClickDelete = async(e) => {
+        e.preventDefault();
+        setShowPopup(true)
+       
+    }
+
+    const handleClickNo = async(e) => {
+        e.preventDefault()
+        setShowPopup(false)
+    }
+
+    const handleClickYes = async(e) => {
+        e.preventDefault()
+        try{
+            const data = await delete_blog(blog._id);
+            if(data){
+                console.log("delete succesfully")
+                onDelete(blog._id); // inform parent component to update the state
+                setShowPopup(false)
+            }
+
+        }catch(err){
+            console.log("error from handle click yes", err)
+        }
+    }
+
+    const Popup = () => {
+        return <>
+        <Box p={4} bg='orange.300'>
+            <Text> Are you sure you want to delete this post? </Text>
+            <Button onClick={handleClickYes} bg='green.300'>Yes </Button>
+            <Button onClick={handleClickNo} bg='red.300'>No</Button>
+        </Box>
+        </>
+    }
+
+    const Display = () =>{
+        if(showPopup === true){
+            return <Popup />
+        }
+    }
+    
 
     const ButtonList = () => {
+        
         if(user && user.username === blog.author && page === "mypage"){
             console.log(user.username , blog.author)
             return <ButtonGroup spacing='5'>
@@ -32,9 +78,10 @@ export const SingleBlog = ({blog,page}) => {
                 <Link to={`/blogs/edit/${blog._id}`}>
                 <Button colorScheme='green' variant='ghost'>Edit</Button>
                 </Link>
-                <Link>
-                <Button colorScheme='green' variant='ghost'> Delete </Button>
-                </Link>
+                
+                <Button onClick={handleClickDelete} colorScheme='green' variant='ghost'> Delete </Button>
+                
+                <Display />
             </ButtonGroup>  
         }else{
             return <ButtonGroup spacing='5'>
