@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 export const BlogInfo = () => {
     const {blog_id} = useParams()
-    console.log("the blog id is", blog_id)
+    
     const [blog,setBlog] = useState(null)
     const [title,setTitle] = useState('')
     const [author,setAuthor] = useState('')
@@ -20,7 +20,7 @@ export const BlogInfo = () => {
     useEffect(()=>{
         async function fetchBlog() {
             const data = await read_blog(blog_id)
-            console.log(data)
+            console.log("blog info yadayada",data)
             if(data){
                 setBlog(data)
                 setTitle(data.title)
@@ -30,18 +30,19 @@ export const BlogInfo = () => {
                 setContent(data.content)
                 setBlogId(data._id)
                 setUpdatedDate(data.updated_date)
+                
             }
         }
-        fetchBlog()
+        fetchBlog()  
     },[])
 
     const Img = () =>{
         const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
 
         if (imgurl){
-            return <Image src={imgurl} alt={`${title} photo`}/>
+            return <Image margin="auto" height="320px" src={imgurl} alt={`${title} photo`}/>
         }else{
-            return <Image src={default_img} alt={`${title} photo`} />
+            return <Image margin="auto" height="320px" src={default_img} alt={`${title} photo`} />
         }
     }
 
@@ -67,18 +68,18 @@ export const BlogInfo = () => {
         <Text fontSize="3xl">{title}</Text>
         <hr/>
         <Box display='flex' gap={2}>
-        <Link class='link' to = {`/blogs/author/${author}`}><Text>{author} </Text></Link>
-        <Text>|</Text>
-        <Text>{date}</Text>
-        <Text>|</Text>
-        <IsUpdated />
-        
+            <Link class='link' to = {`/blogs/author/${author}`}><Text>{author} </Text></Link>
+            <Text>|</Text>
+            <Text>{date}</Text>
+            <Text>|</Text>
+            <IsUpdated />
+    
         </Box>
         <hr/>
         
         <br/>
         <Img />
-            <Text mt={8}>{content}</Text>
+            <Text whiteSpace="pre-line" mt={8}>{content}</Text>
         </Box>
      </>
     }else{
