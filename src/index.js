@@ -10,9 +10,9 @@ root.render(
   <React.StrictMode>
     
       <BrowserRouter>
-      <AuthContextProvider>
-        <App />
-      </AuthContextProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
       </BrowserRouter>
     
   </React.StrictMode>

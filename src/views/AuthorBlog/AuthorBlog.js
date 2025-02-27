@@ -39,7 +39,7 @@ export const AuthorBlog = () => {
         return <>
         
         <WhichNavbar />
-        <Box>
+        <Box ml={3}>
             <Text fontSize='3xl'>
                 {author_name}
             </Text>

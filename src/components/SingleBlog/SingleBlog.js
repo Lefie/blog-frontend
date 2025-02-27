@@ -3,9 +3,8 @@ import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import { Button, Heading } from "@chakra-ui/react"
 import {Card,CardHeader,CardBody,CardFooter} from '@chakra-ui/react'
-import { Text, ButtonGroup, Divider, Image, Box } from "@chakra-ui/react"
+import { Text, ButtonGroup, Divider, Image, Box, Center } from "@chakra-ui/react"
 import './SingleBlog.css'
-import { img } from "framer-motion/client"
 import { useContext } from "react";
 import { AuthContext } from '../../context/AuthContext';
 import { delete_blog } from "../../utils/delete_blog"
@@ -95,19 +94,26 @@ export const SingleBlog = ({blog,page,onDelete}) => {
     
 
     return <>
-    <Card maxW='sm' bg='yellow.100'>
-        <CardBody>
-                `<Image
-            src={imgUrl}
-            alt='Default photo'
-            borderRadius='lg'
-            />
+    <Card 
+    width="320px"
+    minHeight="100%"
+    bg='yellow.100'>
+        <CardBody maxHeight="320px">
+            <Center>
+            <Image
+                src={imgUrl}
+                alt='Default photo'
+                borderRadius='lg'
+                maxHeight="180px"
+                />
+            </Center>
+
             <Heading pt={2} size='md' align='center' >{blog.title}</Heading>
-        `    <Text align='center' fontSize='lg'>
+
+            <Text align='center' fontSize='lg'>
                 <Link class='link' to={`/blogs/author/${blog.author}`}> {blog.author}  </Link> | {blog.date}
             </Text>
-            
-           
+  
         </CardBody>
         <Divider />
         <CardFooter justifyContent='center'>

@@ -65,26 +65,26 @@ export const LoginForm = () => {
       </CardHeader>
 
       <form onSubmit={handleSubmit}>
-      <CardBody>
-        <FormControl isRequired>
-          <FormLabel>Username</FormLabel>
-          <Input type="text" name="username" id="username"
-          value={username}
-          onChange ={(e)=>{setUsername(e.target.value)}}
-           />
+        <CardBody>
+          <FormControl isRequired>
+            <FormLabel>Username</FormLabel>
+            <Input type="text" name="username" id="username"
+            value={username}
+            onChange ={(e)=>{setUsername(e.target.value)}}
+            />
 
-          <FormLabel>Password</FormLabel>
-          <Input type="password" name="password" id="password"
-          value={password}
-          onChange={(e)=>{setPassword(e.target.value)}}
-           />
-      </FormControl>
-      </CardBody>
-      <CardFooter justifyContent='center' >
-        <Button  colorScheme='yellow' size='lg' type='submit'>
-          Submit
-        </Button>
-      </CardFooter>
+            <FormLabel>Password</FormLabel>
+            <Input type="password" name="password" id="password"
+            value={password}
+            onChange={(e)=>{setPassword(e.target.value)}}
+            />
+        </FormControl>
+        </CardBody>
+        <CardFooter justifyContent='center' >
+          <Button  colorScheme='yellow' size='lg' type='submit'>
+            Submit
+          </Button>
+        </CardFooter>
       </form>
     </Card>
 

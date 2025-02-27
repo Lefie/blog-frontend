@@ -79,8 +79,12 @@ export const WriteBlogForm = () => {
                 size='md'
                 h='300px'
                 value={content}
-                onChange={(e)=>{setContent(e.target.value)}}
-            >
+                onChange={
+                    (e)=>{
+                    console.log(e.target.value)
+                    setContent(e.target.value)}
+                }
+            >    
             </Textarea>
             </CardBody>
             <CardFooter>

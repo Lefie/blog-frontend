@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { all_blogs } from "../../utils/all_blogs";
 import { SingleBlog } from "../../components/SingleBlog/SingleBlog";
 import { Link } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 function Blogs() {
 
    
@@ -17,6 +17,7 @@ function Blogs() {
     useEffect(()=>{
         async function fetchAllBlogs() {
             const blogs = await all_blogs()
+            console.log("blogs blogs blogs",blogs)
             
             if(blogs){
                 console.log(blogs)
@@ -41,16 +42,22 @@ function Blogs() {
     return <>
     <WhichNavbar />
     <Box
-    mt={2}
+    mt={10}
     display='flex'
     flexDirection='column'
     alignItems='center'
     >
-        {allBlogs && allBlogs.map(
-            (blog)=>(
-                <SingleBlog key={blog._id} blog={blog} page="all"/>
-        )
-        )}
+        <Flex
+        gap='5' 
+        wrap='wrap'
+        justify='center'
+        >
+            {allBlogs && allBlogs.map(
+                (blog)=>(
+                    <SingleBlog key={blog._id} blog={blog} page="all"/>
+            )
+            )}
+        </Flex>
     </Box>
     
     </>

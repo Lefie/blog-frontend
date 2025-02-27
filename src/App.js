@@ -19,19 +19,19 @@ function App() {
   return (
     <ChakraProvider>
     <div className="App" >
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/blogs' element={<Blogs />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/mypage' element={<MyPage />} />
-        <Route path='/create_blog' element={<CreateBlog />}/>
-        <Route path='/blogs/mypage/:blog_id' element={<DisplayBlog />}/>
-        <Route path='/blogs/blog/:blog_id' element={<DisplayBlog />}/>
-        <Route path='/blogs/authors' element={<Authors />} />
-        <Route path='/blogs/author/:author_name' element={<AuthorBlog />}/>
-        <Route path='/blogs/edit/:blog_id' element={<EditBlog />}/>
-      </Routes>       
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/blogs' element={<Blogs />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/create_blog' element={<CreateBlog />}/>
+          <Route path='/blogs/mypage/:blog_id' element={<DisplayBlog />}/>
+          <Route path='/blogs/blog/:blog_id' element={<DisplayBlog />}/>
+          <Route path='/blogs/authors' element={<Authors />} />
+          <Route path='/blogs/author/:author_name' element={<AuthorBlog />}/>
+          <Route path='/blogs/edit/:blog_id' element={<EditBlog />}/>
+        </Routes>       
     </div>
     </ChakraProvider>
   );
