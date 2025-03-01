@@ -5,16 +5,19 @@ import {
     FormErrorMessage,
     FormHelperText,
     Input,
-    Textarea
+    Textarea,
+    Box
   } from '@chakra-ui/react'
-
-import { Card, CardHeader, CardBody,CardFooter, Button, Text,Box, Heading} from '@chakra-ui/react'
-import React,{ useEffect, useState } from 'react'
+import { Card, CardHeader, CardBody,CardFooter, Button, Image} from '@chakra-ui/react'
+import React,{ useEffect, useState, useRef } from 'react'
 import {
  useNavigate
 } from "react-router-dom";
 import { uploadimg } from '../../utils/uploadimg_api';
 import { publish } from '../../utils/publish_blog';
+import Quill from 'quill';
+import "quill/dist/quill.snow.css";  // Full Quill styles (toolbar, editor, etc.)
+import "quill/dist/quill.core.css";
 
 
 export const WriteBlogForm = () => {
@@ -24,12 +27,13 @@ export const WriteBlogForm = () => {
     const [image, setImage] = useState()
     const [imageurl, setImageurl] = useState('')
     const navigate = useNavigate()
-
     const handleImage = async(e) => {
         setImage(e.target.files[0])  
     }
-
+ 
+    // fetch image 
     useEffect(() => {
+        if (!image) return;
         async function fetchData(){
             const data = await uploadimg(image)
             if(data && data.success === true){
@@ -37,24 +41,23 @@ export const WriteBlogForm = () => {
                 setImageurl(data.img_url)
             }
         }
-        if(image){
-            console.log(image, "from handle image")
-            fetchData()
-        }
+        fetchData()
     },[image])
-    
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        
+        console.log(title,content,imageurl)
+
         const data = await publish({title,content,imageurl})
         if(data){
             const blog_id = data._id
             console.log("navigate to /user/article/article-name")
             navigate('/blogs/mypage/'+blog_id)
             console.log(data)
-        }
+        }     
     }
+
+   
 
     return <>
     <Card>
@@ -68,24 +71,26 @@ export const WriteBlogForm = () => {
                  /> 
             </CardHeader>
             <CardBody>
-            <FormLabel> Image</FormLabel>
-            <Input type="file" id='image' name='image'
-            onChange={handleImage}
+                <FormLabel> Image</FormLabel>
+                <Input type="file" id='image' name='image'
+                onChange={handleImage}
+                />
+                {imageurl && <Image height="100px" src={imageurl} alt="Blog Preview"></Image>}
                 
-             />
-            <FormLabel>Content</FormLabel>
-            
-            <Textarea
-                size='md'
-                h='300px'
-                value={content}
-                onChange={
-                    (e)=>{
-                    console.log(e.target.value)
-                    setContent(e.target.value)}
-                }
-            >    
-            </Textarea>
+                <FormLabel>Content</FormLabel>
+  
+               <Textarea
+                    size='md'
+                    h='300px'
+                    value={content}
+                    onChange={
+                        (e)=>{
+                        console.log(e.target.value)
+                        setContent(e.target.value)}
+                    }
+                >    
+                </Textarea>  
+
             </CardBody>
             <CardFooter>
                 <Button type="submit">Publish</Button>

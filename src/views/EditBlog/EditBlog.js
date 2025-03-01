@@ -44,7 +44,6 @@ export const EditBlog = () => {
                 setBlogTitle(data.title)
                 setBlogImg(data.img_url)
                 setBlogContent(data.content)
-           
             }
         }
         readBlog()

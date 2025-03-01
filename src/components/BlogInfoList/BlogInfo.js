@@ -3,10 +3,10 @@ import { useEffect, useState } from "react"
 import { read_blog } from "../../utils/read_blog"
 import { Image, Box, Text } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
+import { Prose } from '@nikolovlazar/chakra-ui-prose';
 
 export const BlogInfo = () => {
     const {blog_id} = useParams()
-    
     const [blog,setBlog] = useState(null)
     const [title,setTitle] = useState('')
     const [author,setAuthor] = useState('')
@@ -15,7 +15,9 @@ export const BlogInfo = () => {
     const [imgurl,setImgurl] = useState('')
     const [blogId, setBlogId] = useState('')
     const [content, setContent] = useState('')
-    
+
+
+
 
     useEffect(()=>{
         async function fetchBlog() {
@@ -30,12 +32,13 @@ export const BlogInfo = () => {
                 setContent(data.content)
                 setBlogId(data._id)
                 setUpdatedDate(data.updated_date)
-                
             }
         }
         fetchBlog()  
+    
     },[])
 
+  
     const Img = () =>{
         const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
 
@@ -49,7 +52,7 @@ export const BlogInfo = () => {
     const IsUpdated = () => {
         if(updatedDate){
             return <>
-            Last Updated : {updatedDate}
+            Last Updated : {updatedDate.toString().slice(0,10)}
             </>
         }else{
             return <>
@@ -70,7 +73,7 @@ export const BlogInfo = () => {
         <Box display='flex' gap={2}>
             <Link class='link' to = {`/blogs/author/${author}`}><Text>{author} </Text></Link>
             <Text>|</Text>
-            <Text>{date}</Text>
+            <Text>{date.toString().slice(0,10)}</Text>
             <Text>|</Text>
             <IsUpdated />
     
@@ -79,7 +82,7 @@ export const BlogInfo = () => {
         
         <br/>
         <Img />
-            <Text whiteSpace="pre-line" mt={8}>{content}</Text>
+        <Text whiteSpace="pre-line"> {content} </Text> 
         </Box>
      </>
     }else{

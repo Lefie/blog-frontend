@@ -111,7 +111,7 @@ export const SingleBlog = ({blog,page,onDelete}) => {
             <Heading pt={2} size='md' align='center' >{blog.title}</Heading>
 
             <Text align='center' fontSize='lg'>
-                <Link class='link' to={`/blogs/author/${blog.author}`}> {blog.author}  </Link> | {blog.date}
+                <Link class='link' to={`/blogs/author/${blog.author}`}> {blog.author}  </Link> | {blog.date.toString().slice(0,10)}
             </Text>
   
         </CardBody>
