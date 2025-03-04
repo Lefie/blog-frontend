@@ -44,7 +44,7 @@ export const AuthorBlog = () => {
                 {author_name}
             </Text>
             {blogs && blogs.map((blog)=>(
-               <Text><Link class='link' to={`/blogs/blog/${blog._id}`}>{blog.title} </Link> | {blog.date}</Text>
+               <Text><Link class='link' to={`/blogs/blog/${blog._id}`}>{blog.title} </Link> | {blog.date.toString().slice(0,10)}</Text>
             ))}
         
         </Box>
