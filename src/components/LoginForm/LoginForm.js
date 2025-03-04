@@ -21,6 +21,8 @@ export const LoginForm = () => {
   const [isLoggedin, setIsloggedin] = useState(false)
   const {login} = useContext(AuthContext)
   const navigate = useNavigate()
+  const [UserExists, setUserExists] = useState('')
+  const [isPwCorrect, setIsPwCorrect] = useState('')
   
 
   const handleSubmit = async(e) => {
@@ -31,14 +33,52 @@ export const LoginForm = () => {
       console.log(data.username)
       if(data && data.username && data.isLoggedin){
         const userData = {"username":data.username, "isLoggedin":data.isLoggedin}
-        login(userData)
-        navigate("/mypage")
-      }
 
+        console.log(login(userData))
+        setUserExists("")
+        setIsPwCorrect("")
+        navigate("/mypage")
+      }else{
+        console.log("login failure",data)
+        if(data.userExists) {
+          setUserExists("true")
+        }
+        if(data.passwordCorrect){
+          setIsPwCorrect("true")
+        }
+
+        if(data.userExists === false){
+          console.log("user does not exist")
+          setUserExists("false")
+        }
+        else if(data.passwordCorrect === false){
+          setIsPwCorrect("false")
+          console.log("user password does not match")
+        }
+        // conditional error message function 
+      }
 
     }catch(error){
       console.log(error)
     }
+  }
+
+  const errorMsg = () => {
+
+    if(UserExists === "false") {
+      return (
+        <>
+        <Text>The user does not exist</Text>
+        </>
+      )
+    }else if(isPwCorrect === "false") {
+      return (
+        <>
+          <Text>The password is incorrect</Text>
+        </>
+      )
+    }
+    
   }
 
   return(
@@ -79,6 +119,7 @@ export const LoginForm = () => {
             onChange={(e)=>{setPassword(e.target.value)}}
             />
         </FormControl>
+        {errorMsg()}
         </CardBody>
         <CardFooter justifyContent='center' >
           <Button  colorScheme='yellow' size='lg' type='submit'>
