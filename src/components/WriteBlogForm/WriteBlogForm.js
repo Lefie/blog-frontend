@@ -57,6 +57,13 @@ export const WriteBlogForm = () => {
         }     
     }
 
+    const handleRemoveImage = async(e) => {
+        e.preventDefault()
+        setImage(null)
+        setImageurl('')
+        console.log("image cleared")
+    }
+
    
 
     return <>
@@ -67,16 +74,18 @@ export const WriteBlogForm = () => {
                 <FormLabel>Blog Title</FormLabel>
                 <Input type="text" name="title" id="blog_text"
                     value = {title}
+                    isRequired
                     onChange={(e)=>{setTitle(e.target.value)}}
                  /> 
             </CardHeader>
             <CardBody>
                 <FormLabel> Image</FormLabel>
-                <Input type="file" id='image' name='image'
+                <Input marginBottom={3} type="file" id='image' name='image'
                 onChange={handleImage}
                 />
                 {imageurl && <Image height="100px" src={imageurl} alt="Blog Preview"></Image>}
-                
+                <Button onClick={handleRemoveImage}>Remove Image</Button>
+
                 <FormLabel>Content</FormLabel>
   
                <Textarea
