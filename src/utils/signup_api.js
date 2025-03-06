@@ -1,6 +1,6 @@
 
 const domain = "http://localhost:5050"
-const deployed_domain = "blog-backend-production-0ee0.up.railway.app"
+const deployed_domain = "https://blog-backend-production-0ee0.up.railway.app"
 
 export const userSignup = async ({username, password, email}) => {
     const route = "/users/signup"
