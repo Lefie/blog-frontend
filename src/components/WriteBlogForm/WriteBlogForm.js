@@ -15,9 +15,7 @@ import {
 } from "react-router-dom";
 import { uploadimg } from '../../utils/uploadimg_api';
 import { publish } from '../../utils/publish_blog';
-import Quill from 'quill';
-import "quill/dist/quill.snow.css";  // Full Quill styles (toolbar, editor, etc.)
-import "quill/dist/quill.core.css";
+
 
 
 export const WriteBlogForm = () => {
