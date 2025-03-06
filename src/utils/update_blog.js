@@ -1,8 +1,10 @@
 
 const domain = "http://localhost:5050"
+const deployed_domain = "blog-backend-production-0ee0.up.railway.app"
+
 export const update_blog = async( blog_id,{title, content, img_url} ) => {
     const route = `/blogs/blog/${blog_id}`
-    const api = domain + route
+    const api = deployed_domain + route
 
     console.log(blog_id)
     console.log(title,content,img_url)

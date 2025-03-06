@@ -1,8 +1,9 @@
 const domain = "http://localhost:5050"
+const deployed_domain = "blog-backend-production-0ee0.up.railway.app"
 
 export const myBlogs = async() => {
     const route = "/blogs/my_blogs"
-    const api = domain + route
+    const api = deployed_domain + route
     
     const response = await fetch(api,{
         method: 'GET',
