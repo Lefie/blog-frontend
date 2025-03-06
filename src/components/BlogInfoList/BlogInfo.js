@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { read_blog } from "../../utils/read_blog"
 import { Image, Box, Text } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { Prose } from '@nikolovlazar/chakra-ui-prose';
 
 export const BlogInfo = () => {
     const {blog_id} = useParams()
