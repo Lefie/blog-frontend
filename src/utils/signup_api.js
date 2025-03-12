@@ -1,10 +1,8 @@
 
-const domain = "http://localhost:5050"
-const deployed_domain = "https://blog-backend-production-0ee0.up.railway.app"
 
 export const userSignup = async ({username, password, email}) => {
     const route = "/users/signup"
-    const api = deployed_domain + route
+    const api = process.env.REACT_APP_API_URL + route
     console.log(username, password,email,"from utils", "hitting api at",api)
 
     console.log(JSON.stringify({username,email,password}))

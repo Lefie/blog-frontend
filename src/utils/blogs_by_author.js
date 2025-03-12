@@ -1,11 +1,9 @@
 import { all_blogs } from "./all_blogs"
 
-const domain = 'http://localhost:5050'
-const deployed_domain = "https://blog-backend-production-0ee0.up.railway.app"
 
 export const blogs_by_author = async(author_name) => {
     const route =  `/blogs/blog/author/${author_name}`
-    const api = deployed_domain + route
+    const api = process.env.REACT_APP_API_URL + route
 
     console.log(api, "before response")
     const response = await fetch(api, {

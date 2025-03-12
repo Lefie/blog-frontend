@@ -1,10 +1,8 @@
 
-const domain = "http://localhost:5050"
-const deployed_domain = "https://blog-backend-production-0ee0.up.railway.app"
 
 export const delete_blog = async(blog_id) => {
     const route = `/blogs/blog/${blog_id}`
-    const api = deployed_domain + route
+    const api = process.env.REACT_APP_API_URL + route
     
     const response = await fetch(api,{
         method: 'DELETE',
