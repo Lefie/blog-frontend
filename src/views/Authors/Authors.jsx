@@ -21,13 +21,6 @@ export const Authors = () => {
         fetchAuthors()
     },[])
 
-    const WhichNavbar = () => {
-        if(user){
-            return <Navbar page ='loggedin'/>
-        }else{
-            return <Navbar page='not_logged_in' />
-        }
-    }
 
     const EachAuthor = () => {
         if(allAuthors){
@@ -47,8 +40,12 @@ export const Authors = () => {
     }
 
     return <>
-        <WhichNavbar />
-        <Box p={8}>
+        <Box
+        border='1px solid black'
+        minHeight='15rem'
+        minWidth='30rem'
+        overflowY='scroll'
+        p={8}>
             <Text fontSize='3xl'>Authors</Text>
             <EachAuthor />
         </Box>

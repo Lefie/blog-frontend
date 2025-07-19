@@ -51,42 +51,53 @@ export const SingleBlog = ({blog,page,onDelete}) => {
 
     const Popup = () => {
         return <>
-        <Box p={4} bg='orange.300'>
+        <Box  
+        width='15rem'
+        marginTop='1em'
+        padding='0.5em'
+        bgColor='rgb(247, 129, 129, 0.546)'
+        borderRadius='0.2em'
+         >
             <Text> Are you sure you want to delete this post? </Text>
-            <Button onClick={handleClickYes} bg='green.300'>Yes </Button>
+            <Button onClick={handleClickYes} marginRight={1} bg='green.300'>Yes </Button>
             <Button onClick={handleClickNo} bg='red.300'>No</Button>
         </Box>
         </>
     }
 
-    const Display = () =>{
-        if(showPopup === true){
-            return <Popup />
-        }
-    }
-    
+  
 
     const ButtonList = () => {
         
         if(user && user.username === blog.author && page === "mypage"){
             console.log(user.username , blog.author)
-            return <ButtonGroup spacing='5'>
-            <Link to={`/blogs/blog/${blog._id}`}>
-                <Button colorScheme='green' variant='solid'>Read</Button>
-                </Link>
-                <Link to={`/blogs/edit/${blog._id}`}>
-                <Button colorScheme='green' variant='ghost'>Edit</Button>
-                </Link>
-                
-                <Button onClick={handleClickDelete} colorScheme='green' variant='ghost'> Delete </Button>
-                
-                <Display />
-            </ButtonGroup>  
+            return (
+            <>
+            <Box 
+                display='flex'
+                flexDirection='column'
+                alignItems='center'
+            >
+                <ButtonGroup spacing='5'>
+                    <Link to={`/blogs/mypage/${blog._id}`}>
+                        <Button colorScheme='green' variant='solid'>Read</Button>
+                    </Link>
+                    <Link to={`/blogs/edit/${blog._id}`}>
+                        <Button colorScheme='green' variant='ghost'>Edit</Button>
+                    </Link>
+                    
+                    <Button onClick={handleClickDelete} colorScheme='green' variant='ghost'> Delete </Button>
+                </ButtonGroup>  
+                {showPopup && <>
+                    <Popup />
+                </>}
+            </Box>
+            </>)
         }else{
             return <ButtonGroup spacing='5'>
             <Link to={`/blogs/blog/${blog._id}`}>
                 <Button colorScheme='green' variant='solid'>Read</Button>
-                </Link>
+            </Link>
             </ButtonGroup>  
         }
     }

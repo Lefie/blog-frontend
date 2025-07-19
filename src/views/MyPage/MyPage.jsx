@@ -39,22 +39,21 @@ function MyPage() {
 
     if(user){
         return <>
-            <Navbar page='loggedin'/>
-            <Text fontSize='3xl' align='center'>  Welcome {user.username} !</Text>
-            <Box
+            <Text 
+            fontSize='3xl' 
+            align='center'
+            >  Welcome {user.username} !</Text>
+            {blogs && <>
+                <Box
             display='flex'
             pl={2}
-            width='100%'
+            height='full'
+            paddingTop='2em'
+            paddingBottom='2em'
             >
                 
                 <Text 
-                align='center' 
-                width='100%'
-                height='full'
-                marginTop='10px'
-                marginLeft='15px'
-                marginBottom='15px'
-                 >
+                align='center'>
                    
                    <Center>
                         <Flex 
@@ -70,7 +69,6 @@ function MyPage() {
                                             page="mypage"
                                             onDelete={handleDeleteBlog}
                                             />
-
                                     </>
                                 ))
                                 }
@@ -78,6 +76,8 @@ function MyPage() {
                     </Center>
                 </Text>
             </Box>
+            </>}
+            
         </>
     }
 }

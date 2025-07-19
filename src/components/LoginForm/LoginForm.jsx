@@ -83,13 +83,6 @@ export const LoginForm = () => {
 
   return(
     <>
-    <Box
-    bg='#FFFFF0'
-    height="90vh"
-    display='flex'
-    alignItems='center'
-    justifyContent="center"
-    >
 
     <Card
     border='1px'
@@ -129,7 +122,7 @@ export const LoginForm = () => {
       </form>
     </Card>
 
-    </Box>
+  
     </>
   )
 }

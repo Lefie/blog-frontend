@@ -28,26 +28,9 @@ function Blogs() {
         fetchAllBlogs()
     },[])
 
-    const WhichNavbar = () => {
-        if(user){
-            return <Navbar page ='loggedin'/>
-        }else{
-            return <Navbar page='not_logged_in' />
-        }
-    }
-
-    
-
-
     return <>
-    <WhichNavbar />
-    <Box
-    mt={10}
-    display='flex'
-    flexDirection='column'
-    alignItems='center'
-    >
         <Flex
+        margin='1em'
         gap='5' 
         wrap='wrap'
         justify='center'
@@ -58,8 +41,7 @@ function Blogs() {
             )
             )}
         </Flex>
-    </Box>
-    
+ 
     </>
     
 

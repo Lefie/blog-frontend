@@ -65,7 +65,9 @@ export const WriteBlogForm = () => {
    
 
     return <>
-    <Card>
+    <Card
+    margin='1.5em'
+    >
         <form onSubmit={handleSubmit} >
         <FormControl>
             <CardHeader>

@@ -42,9 +42,9 @@ export const BlogInfo = () => {
         const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
 
         if (imgurl){
-            return <Image margin="auto" height="320px" src={imgurl} alt={`${title} photo`}/>
+            return <Image margin="auto" height="15rem" src={imgurl} alt={`${title} photo`}/>
         }else{
-            return <Image margin="auto" height="320px" src={default_img} alt={`${title} photo`} />
+            return <Image margin="auto" height="15rem" src={default_img} alt={`${title} photo`} />
         }
     }
 
@@ -65,7 +65,11 @@ export const BlogInfo = () => {
 
         return <>
         <Box
-        p={12}
+        p={10}
+        display='flex'
+        flexDirection='column'
+        minHeight='50vh'
+        justifyContent='space-around'
         >
         <Text fontSize="3xl">{title}</Text>
         <hr/>
@@ -75,13 +79,19 @@ export const BlogInfo = () => {
             <Text>{date.toString().slice(0,10)}</Text>
             <Text>|</Text>
             <IsUpdated />
-    
         </Box>
         <hr/>
         
         <br/>
         <Img />
-        <Text whiteSpace="pre-line"> {content} </Text> 
+        <Text 
+        border='1px solid gray'
+        borderRadius='0.2em'
+        marginTop='1em'
+        padding='0.5rem'
+        overflowY='scroll' 
+        maxWidth='25em'
+        maxHeight='18em' whiteSpace="pre-line"> {content} </Text> 
         </Box>
      </>
     }else{

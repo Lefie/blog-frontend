@@ -107,8 +107,9 @@ export const EditBlog = () => {
     }
 
     return <>
-    <Navbar page ='loggedin'/>
-    <Card>
+    <Card
+    margin='1em'
+    >
         <form onSubmit={handleSubmit}>
         <FormControl>
         <CardHeader>

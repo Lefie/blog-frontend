@@ -6,7 +6,6 @@ function Login() {
 
     return (
         <>
-        <Navbar page="not_logged_in"/>
         <LoginForm />
         </>
     )

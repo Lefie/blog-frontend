@@ -27,19 +27,15 @@ export const AuthorBlog = () => {
         
     },[])
     
-    
-    const WhichNavbar = () => {
-        if(user){
-            return <Navbar page ='loggedin'/>
-        }else{
-            return <Navbar page='not_logged_in' />
-        }
-    }
 
         return <>
-        
-        <WhichNavbar />
-        <Box ml={3}>
+        <Box 
+        border='1px solid black'
+        minHeight='15rem'
+        minWidth='30rem'
+        overflowY='scroll'
+        p='1em'
+        >
             <Text fontSize='3xl'>
                 {author_name}
             </Text>

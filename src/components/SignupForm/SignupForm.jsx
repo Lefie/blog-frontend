@@ -48,18 +48,9 @@ export const SignupForm = () => {
     }
 
     return (
-        <Box
-        bg='#FFFFF0'
-        height='90vh'
-        display='flex'
-        flexDirection='column'
-        justifyContent='center'
-        alignItems='center'
-        >
-            
-            <Card
+        <Card
             p='12'
-            w='45%'
+            w='20rem'
             border='1px'
             borderColor='orange.100'
             >
@@ -108,7 +99,7 @@ export const SignupForm = () => {
                 </CardFooter>
                 </form>
                <ErrorExist err={error}/>
-            </Card>
-        </Box>
+        </Card>
+
     )
 }
