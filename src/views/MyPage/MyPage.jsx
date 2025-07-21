@@ -12,6 +12,7 @@ function MyPage() {
 
     // TODO : limit the number of blogs to just 3. after that, add 'More' to see more
     const { user } = useContext(AuthContext)
+    console.log(user)
     const navigate = useNavigate()
     const [blogs, setBlogs] = useState(null)
 

@@ -71,7 +71,7 @@ export const WriteBlogForm = () => {
         <form onSubmit={handleSubmit} >
         <FormControl>
             <CardHeader>
-                <FormLabel>Blog Title</FormLabel>
+                <FormLabel fontWeight={'bold'}>Blog Title</FormLabel>
                 <Input type="text" name="title" id="blog_text"
                     value = {title}
                     isRequired
@@ -79,14 +79,16 @@ export const WriteBlogForm = () => {
                  /> 
             </CardHeader>
             <CardBody>
-                <FormLabel> Image</FormLabel>
+                <FormLabel fontWeight={'bold'}> Image</FormLabel>
                 <Input marginBottom={3} type="file" id='image' name='image'
                 onChange={handleImage}
                 />
                 {imageurl && <Image height="100px" src={imageurl} alt="Blog Preview"></Image>}
                 <Button onClick={handleRemoveImage}>Remove Image</Button>
 
-                <FormLabel>Content</FormLabel>
+                <FormLabel 
+                marginTop='4'
+                fontWeight={'bold'}>Content</FormLabel>
   
                <Textarea
                     size='md'

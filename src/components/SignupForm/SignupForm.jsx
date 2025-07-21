@@ -53,6 +53,7 @@ export const SignupForm = () => {
             w='20rem'
             border='1px'
             borderColor='orange.100'
+            margin='1.5em'
             >
                 <CardHeader>
                     <Heading 

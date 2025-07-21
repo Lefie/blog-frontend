@@ -85,13 +85,11 @@ export const BlogInfo = () => {
         <br/>
         <Img />
         <Text 
-        border='1px solid gray'
         borderRadius='0.2em'
         marginTop='1em'
         padding='0.5rem'
-        overflowY='scroll' 
-        maxWidth='25em'
-        maxHeight='18em' whiteSpace="pre-line"> {content} </Text> 
+        maxWidth='30rem'
+        whiteSpace="pre-line"> {content} </Text> 
         </Box>
      </>
     }else{

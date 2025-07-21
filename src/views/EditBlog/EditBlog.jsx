@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Navbar } from "../../components/Navbar/Navbar";
 import { read_blog } from "../../utils/read_blog";
 import { uploadimg } from '../../utils/uploadimg_api';
-import { Card, CardHeader, CardBody,CardFooter, Button, Text,Box, Heading} from '@chakra-ui/react'
+import { Card, CardHeader, CardBody,CardFooter, Button, Text,Box, Heading, Spacer} from '@chakra-ui/react'
 import {
     FormControl,
     FormLabel,
@@ -111,7 +111,7 @@ export const EditBlog = () => {
     margin='1em'
     >
         <form onSubmit={handleSubmit}>
-        <FormControl>
+        <FormControl fontWeight={'bold'}>
         <CardHeader>
             <FormLabel>
                 Blog Title
@@ -135,8 +135,11 @@ export const EditBlog = () => {
         <ClearingImg />
 
 
-
-        <FormLabel>Content</FormLabel>
+     
+        <FormLabel 
+        marginTop='4'
+        fontWeight={'bold'}
+        >Content</FormLabel>
             
             <Textarea
                 size='md'

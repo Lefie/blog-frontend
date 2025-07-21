@@ -30,7 +30,6 @@ export const AuthorBlog = () => {
 
         return <>
         <Box 
-        border='1px solid black'
         minHeight='15rem'
         minWidth='30rem'
         overflowY='scroll'

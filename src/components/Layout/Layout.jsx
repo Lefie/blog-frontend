@@ -89,9 +89,12 @@ export default function Layout({loggedin}) {
 
     return (
         <>
-        <Box minHeight={"100vh"}>
+        <Box 
+        minHeight={"100vh"}
+        overflowY='scroll'
+        >
             <header>
-                <Box 
+            <Box 
             p='4' 
             minHeight={"10vh"}
             bg="#FAF089"
@@ -118,7 +121,7 @@ export default function Layout({loggedin}) {
                     display='flex'
                     flexDirection='column'
                     alignItems='center'
-                    justifyContent="center"
+                    justifyContent="flex-start"
                     >
                     <Outlet />
                 </Box>

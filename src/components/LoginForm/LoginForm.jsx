@@ -34,7 +34,7 @@ export const LoginForm = () => {
       if(data && data.username && data.isLoggedin){
         const userData = {"username":data.username, "isLoggedin":data.isLoggedin}
 
-        console.log(login(userData))
+        login(userData)
         setUserExists("")
         setIsPwCorrect("")
         navigate("/mypage")
@@ -87,6 +87,7 @@ export const LoginForm = () => {
     <Card
     border='1px'
     borderColor='orange.100'
+    margin='5.5em'
     >
       <CardHeader>
         <Heading 
