@@ -1,5 +1,4 @@
 import './DisplayBlog.css'
-import { Navbar } from '../../components/Navbar/Navbar'
 import { AuthContext } from '../../context/AuthContext'
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'

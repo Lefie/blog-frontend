@@ -39,7 +39,7 @@ export const BlogInfo = () => {
 
   
     const Img = () =>{
-        const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
+        const default_img = 'https://www.dominicanajournal.org/wp-content/uploads/2025/06/chaojie-ni-8HVfSz-sbOQ-unsplash-scaled.jpg'
 
         if (imgurl){
             return <Image margin="auto" height="15rem" src={imgurl} alt={`${title} photo`}/>

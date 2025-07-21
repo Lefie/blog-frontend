@@ -2,7 +2,6 @@ import { authors } from "../../utils/all_authors"
 import { useEffect, useState } from "react"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
-import { Navbar } from "../../components/Navbar/Navbar"
 import { Text, Box } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 

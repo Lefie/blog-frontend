@@ -14,7 +14,7 @@ export const SingleBlog = ({blog,page,onDelete}) => {
 
     const {user} = useContext(AuthContext)
     const naviagte = useNavigate()
-    const default_img = 'https://signsofchrist.com/cdn/shop/products/JesusLovesYou.jpg?v=1641061351'
+    const default_img = 'https://www.dominicanajournal.org/wp-content/uploads/2025/06/chaojie-ni-8HVfSz-sbOQ-unsplash-scaled.jpg'
     const [imgUrl, setImgUrl] = useState(blog.img_url)
     console.log(blog.img_url)
     if(!imgUrl){

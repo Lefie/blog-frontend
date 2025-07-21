@@ -3,9 +3,8 @@ import { useEffect, useState } from "react"
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Navbar } from "../../components/Navbar/Navbar";
 import { read_blog } from "../../utils/read_blog";
-import { uploadimg } from '../../utils/uploadimg_api';
+import { uploadimg } from '../../utils/uploadimg';
 import { Card, CardHeader, CardBody,CardFooter, Button, Text,Box, Heading, Spacer} from '@chakra-ui/react'
 import {
     FormControl,
@@ -27,7 +26,7 @@ export const EditBlog = () => {
     const [image, setImage] = useState()
     const [newImgUrl, setNewImgUrl] = useState('')
     const [blogContent, setBlogContent] = useState('')
-    const [clearImg, setClearImg] = useState(false)
+    const [newImgProcessStarted, setNewImgProcessStarted] = useState(false)
     
 
     useEffect(()=>{
@@ -53,11 +52,14 @@ export const EditBlog = () => {
         async function fetchData(){
             if(image){
                 console.log("new image detectd")
+                setNewImgProcessStarted(true)
                 const data = await uploadimg(image)
+
                 if(data && data.success === true){
                     console.log(data.img_url)
                     setNewImgUrl(data.img_url)
                 }
+                setNewImgProcessStarted(false)
             }
         }
        
@@ -74,37 +76,26 @@ export const EditBlog = () => {
         console.log("new img url",newImgUrl) // new img url
         console.log(blog_id)
       
-        const data_obj = {'title':blogTitle,'content':blogContent,'img_url':newImgUrl ? newImgUrl : blogImg}
-        console.log(data_obj)
-        const data = await update_blog(blog_id, data_obj)
-        
-        if(data){
-            naviagte(`/blogs/blog/${blog_id}`)
+        let data_obj;
+   
+        if (newImgUrl){
+            data_obj = {'title':blogTitle,'content':blogContent,'img_url':newImgUrl}
+            console.log("new img url")
+         
+        }else{
+            data_obj = {'title':blogTitle,'content':blogContent,'img_url':blogImg}
+        }
+
+        if (data_obj) {
+            console.log(data_obj)
+            const data = await update_blog(blog_id, data_obj)        
+
+            if(data){
+                naviagte(`/blogs/blog/${blog_id}`)
+            }
         }
     }
 
-    const handleRemoveImage = async(e) => {
-        e.preventDefault()
-        console.log("handle remove image button clicked")
-        const data_obj = {"img_url":""}
-        const data = await update_blog(blog_id, data_obj)
-        if(data){
-            setClearImg(true)
-        }
-    }
-
-    const ClearingImg = () => {
-        if(clearImg === true){
-            return <>
-            <Box bg='green.100'>
-                <Box onClick={()=>{setClearImg(false)}} w={8} h={8}>
-                    X
-                </Box>
-            Image cleared
-            </Box>
-            </>
-        }
-    }
 
     return <>
     <Card
@@ -127,15 +118,9 @@ export const EditBlog = () => {
           <Input type="file" id='image' name='image'
           onChange={(e)=>{setImage(e.target.files[0])}}
            />
-
-      
-        <Button onClick={handleRemoveImage} m={2}>
-            Remove Imgae
-        </Button>
-        <ClearingImg />
+        {newImgProcessStarted &&<> <Text>Wait for photo to finish upload ...</Text></>}
 
 
-     
         <FormLabel 
         marginTop='4'
         fontWeight={'bold'}

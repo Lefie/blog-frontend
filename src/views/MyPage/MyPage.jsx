@@ -1,7 +1,6 @@
 import "./MyPage.css"
 import { AuthContext } from '../../context/AuthContext';
 import { useContext, useEffect } from "react";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { useNavigate, Link } from "react-router-dom";
 import { Box, Text, Spacer, Center,Flex,Wrap, Button, WrapItem } from "@chakra-ui/react";
 import { useState } from "react";

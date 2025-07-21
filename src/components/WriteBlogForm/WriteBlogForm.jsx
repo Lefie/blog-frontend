@@ -13,7 +13,7 @@ import React,{ useEffect, useState, useRef } from 'react'
 import {
  useNavigate
 } from "react-router-dom";
-import { uploadimg } from '../../utils/uploadimg_api';
+import { uploadimg } from '../../utils/uploadimg';
 import { publish } from '../../utils/publish_blog';
 
 
