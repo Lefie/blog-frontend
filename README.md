@@ -29,3 +29,4 @@ As a logged-in user, you can starting create your own blog posts
 * Authors 
 ![Authors List](./public/imgs/screenshot5.png)
 You can view a list of authors who are users that have written and published blog posts
+
