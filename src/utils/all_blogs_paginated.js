@@ -1,7 +1,8 @@
-
-export const all_blogs = async() => {
-    const route = "/blogs/all"
+export const all_blogs_paginated = async(page=1) => {
+    const route = `/blogs/all-paginated?page=${page}`
     const api = process.env.REACT_APP_API_URL + route
+    
+    
 
     const response = await fetch(api,{
         method: 'GET',
@@ -10,13 +11,13 @@ export const all_blogs = async() => {
     })
 
     if(!response.ok){
-        console.log("response not ok"+ response.statusText)
+        const errorData = await response.json()
+        console.log(errorData)
+        throw new Error(errorData.error)
     }
 
     const data = await response.json()
-    console.log("all blogs")
-    console.log(data)
+    console.log("data from all page paginated",data)
     return data
+
 }
-
-
