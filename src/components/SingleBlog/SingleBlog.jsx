@@ -16,11 +16,11 @@ export const SingleBlog = ({blog,page,onDelete}) => {
     const naviagte = useNavigate()
     const default_img = 'https://www.dominicanajournal.org/wp-content/uploads/2025/06/chaojie-ni-8HVfSz-sbOQ-unsplash-scaled.jpg'
     const [imgUrl, setImgUrl] = useState(blog.img_url)
-    console.log(blog.img_url)
+    //console.log(blog.img_url)
     if(!imgUrl){
         setImgUrl(default_img)
     }
-    console.log("What page am I on", page)
+    //console.log("What page am I on", page)
     const [showPopup, setShowPopup] = useState(false)
 
     const handleClickDelete = async(e) => {
