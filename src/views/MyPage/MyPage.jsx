@@ -4,26 +4,34 @@ import { useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Box, Text, Spacer, Center,Flex,Wrap, Button, WrapItem } from "@chakra-ui/react";
 import { useState } from "react";
-import { myBlogs } from "../../utils/my_blogs";
 import { SingleBlog } from "../../components/SingleBlog/SingleBlog";
+import { myBlogsPaginated } from "../../utils/my_blogs_paginated";
+import { Error } from "../../components/Error/Error";
+import { PageNav } from "../../components/PageNav/PageNav";
 
 function MyPage() {
 
-    // TODO : limit the number of blogs to just 3. after that, add 'More' to see more
     const { user } = useContext(AuthContext)
     console.log(user)
     const navigate = useNavigate()
-    const [blogs, setBlogs] = useState(null)
 
-    useEffect(()=>{
-        async function fetchData(){
-            const all_blogs = await myBlogs()
-            setBlogs(all_blogs)
-        }
+    const [blogs, setBlogs] = useState({
+        "blogs":[],
+        "curPageNum":1,
+        "isNextPage":false,
+        "isPrevPage":false,
+        "totalPageNum":0
+    })
 
-        fetchData()
-       
-    },[])
+    const [pageNumber, setPageNumber] = useState()
+    const [error, setError] = useState({
+        "errorType":"",
+        "errorMsg":""
+    })
+
+    
+
+    
 
     useEffect(()=>{
         if(!user){
@@ -31,6 +39,52 @@ function MyPage() {
         }
 
     },[user])
+
+    useEffect(()=>{
+        console.log("initial load")
+        getMyBlogsByPageNum(1)
+    },[])
+
+    useEffect(()=>{
+    if (error && error.errorType !== "" && error.errorMsg !== ""){
+        setTimeout(()=>{
+            setError(prev => ({
+                ...prev, 
+                "errorType":"",
+                "errorMsg":""
+            }))
+        }, 5000)
+    }
+    },[error])
+
+
+    async function getMyBlogsByPageNum(pageNum){
+        const results = await myBlogsPaginated(pageNum)
+        console.log(results)
+        setBlogs(prev => ({
+            ...prev,
+            "blogs":results.blog_data,
+            "curPageNum":pageNum,
+            "isNextPage":results.pagination.hasNextPage,
+            "isPrevPage":results.pagination.hasPrevPage,
+            "totalPageNum":results.pagination.totalPages
+        }))
+
+    }
+
+    function handlePageNumber(pn){
+        console.log("handlePage number", pn)
+        getMyBlogsByPageNum(pn)
+    
+    }
+
+    function handleError(errType, errMsg){
+        setError(prev => ({
+            ...prev,
+            "errorType":errType,
+            "errorMsg":errMsg
+        }))
+    }
 
     // Function to remove a blog from the list after deletion
     const handleDeleteBlog = (deletedBlogId) => {
@@ -61,7 +115,7 @@ function MyPage() {
                         wrap='wrap'
                         justify='center'
                         >   
-                                { blogs && blogs.map(blog => (
+                                { blogs && blogs.blogs && blogs.blogs.map(blog => (
                                     <>      
                                             <SingleBlog 
                                             key={blog._id}
@@ -77,6 +131,8 @@ function MyPage() {
                 </Text>
             </Box>
             </>}
+        <PageNav blogData={blogs} onPageChange={handlePageNumber} onErrorChange={handleError} />
+        <Error err={error} />
             
         </>
     }

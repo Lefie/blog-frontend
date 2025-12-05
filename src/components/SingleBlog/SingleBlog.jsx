@@ -70,7 +70,7 @@ export const SingleBlog = ({blog,page,onDelete}) => {
     const ButtonList = () => {
         
         if(user && user.username === blog.author && page === "mypage"){
-            console.log(user.username , blog.author)
+            //console.log(user.username , blog.author)
             return (
             <>
             <Box 
